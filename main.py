@@ -1,7 +1,5 @@
-import discord
+import discord,os,json
 from discord.ext import commands
-import os
-import json
 
 intents = discord.Intents.all()
 
@@ -86,7 +84,7 @@ for filename in os.listdir('./cogs'):
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
     if reason==None:
-      reason=" no reason provided"
+      reason="no reason provided you probally broken on of the rule on the discord sever"
     await ctx.guild.kick(member)
     await ctx.send(f'User {member.mention} has been kicked for {reason}')
 
