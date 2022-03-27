@@ -136,13 +136,17 @@ async def level_up(users, user , channel):
 @commands.has_permissions(kick_members=True)
 async def mute(ctx, role:discord.Role, user: discord.Member):
     await user.add_roles(muterole)
-    await ctx.send(f'{user.metion} has benn muted')
+    await ctx.send(f'{user.metion} was muted')
     
 @client.command(ctx)
 @commands.has_permissions(kick_members=True)
 async def unmute(ctx, role:discord.Role, user: discord.Member):
     await user.remove_roles(muterole)
-    await ctx.send(f'{user.metion} has benn unmuted')
+    await ctx.send(f'{user.metion} was unmuted')
     
+userinfo = bot.get_user(user_id)
+
+async def userinfo(ctx, *, user: discord.User)
+    await ctx.send(f'getting {userinfo} info')
 
 client.run(token)
