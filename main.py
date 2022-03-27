@@ -131,5 +131,18 @@ async def level_up(users, user , channel):
     if lvl_start < lvl_end:
         await client.send_message(channel, '{} has leveled up to level {}'.format(user.mention, lvl_end))
         users[user.id]['level'] = lvl_end
+        
+@client.command(ctx)
+@commands.has_permissions(kick_members=True)
+async def mute(ctx, role:discord.Role, user: discord.Member):
+    await user.add_roles(muterole)
+    await ctx.send(f'{user.metion} has benn muted')
+    
+@client.command(ctx)
+@commands.has_permissions(kick_members=True)
+async def unmute(ctx, role:discord.Role, user: discord.Member):
+    await user.remove_roles(muterole)
+    await ctx.send(f'{user.metion} has benn unmuted')
+    
 
 client.run(token)
