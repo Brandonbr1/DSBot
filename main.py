@@ -1,4 +1,5 @@
 # packages
+from webserver import keep_alive
 import discord
 import os
 import json
@@ -9,18 +10,6 @@ from io import BytesIo
 intents = discord.Intents.all()
 
 client = commands.bot(command_prefix = '!', intents=intents )
-
-#gets the config.json to get the token
-if os.path.exists(os.getcwd() + "/config.json" ):
-    with open("./config.json") as f:
-        configData = json.load(f)
-else:
-    configTemplate = {"Token": ""}
-
-    with open(os.getcwd() + "/config.json", "w+" ) as f:
-        json.dump(configTemplate, f)
-
-token = configData["Token"]
 
 @client.event()
 async def on_member_join(member):
@@ -185,7 +174,10 @@ async def on_message(message,ctx):
   	response = await message.channel.send("Hi") 
 	await ctx.send('Hello')
     
-    
+keep_alive()
+TOKEN = os.environ.get("DISCORD_BOT_SECRET")
+
+
 #run the bot
-client.run(token)
+client.run(TOKEN)
 
