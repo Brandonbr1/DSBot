@@ -169,12 +169,12 @@ async def clear(ctx, number):
 @client.event(pass_context = True)
 async def on_message(message,ctx):
   	response = await message.channel.send("Hello") 
-	await ctx.send('Hi', delete_after=5)
+	await ctx.send('Hi')
 
 @client.event(pass_context = True)
 async def on_message(message,ctx):
   	response = await message.channel.send("Hi") 
-	await ctx.send('Hello', delete_after=5)
+	await ctx.send('Hello')
     
 #run the bot
 client.run(token)
