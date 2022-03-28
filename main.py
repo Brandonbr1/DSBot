@@ -156,7 +156,26 @@ async def on_message(message):
     
     if any(word in msg_content for word in curseWord):
         await message.delete(*, delay=None)
-        
+       
+       
+@Client.command(pass_context = True)
+async def clear(ctx, number):
+    mgs = [] #Empty list to put all the messages in the log
+    number = int(number) #Converting the amount of messages to delete to an integer
+    async for x in Client.logs_from(ctx.message.channel, limit = number):
+        mgs.append(x)
+    await Client.delete_messages(mgs)
+    
+@client.event(pass_context = True)
+async def on_message(message,ctx):
+  	response = await message.channel.send("Hello") 
+	await ctx.send('Hi', delete_after=5)
 
+@client.event(pass_context = True)
+async def on_message(message,ctx):
+  	response = await message.channel.send("Hi") 
+	await ctx.send('Hello', delete_after=5)
+    
 #run the bot
 client.run(token)
+
