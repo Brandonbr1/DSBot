@@ -1,5 +1,10 @@
-import discord,os,json
+# packages
+import discord
+import os
+import json
+import DiscordUtils
 from discord.ext import commands
+from io import BytesIo
 
 intents = discord.Intents.all()
 
@@ -168,13 +173,18 @@ async def clear(ctx, number):
     
 @client.event(pass_context = True)
 async def on_message(message,ctx):
+    ChannelGet = await Channel.send(text)
+    await ChannelGet.add_reaction('👋')
   	response = await message.channel.send("Hello") 
 	await ctx.send('Hi')
 
 @client.event(pass_context = True)
 async def on_message(message,ctx):
+    ChannelGet = await Channel.send(text)
+    await ChannelGet.add_reaction('👋')
   	response = await message.channel.send("Hi") 
 	await ctx.send('Hello')
+    
     
 #run the bot
 client.run(token)
