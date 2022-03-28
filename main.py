@@ -5,6 +5,7 @@ intents = discord.Intents.all()
 
 client = commands.bot(command_prefix = '!', intents=intents )
 
+#gets the config.json to get the token
 if os.path.exists(os.getcwd() + "/config.json" ):
     with open("./config.json") as f:
         configData = json.load(f)
@@ -35,15 +36,15 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send('Please pass in all requirements :rolling_eyes:.')
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("You dont have all the requirements :angry:")
+        await ctx.send("You dont have all the requirements to execute this command you need to be an admin/mod :angry:")
 
-#The below code bans player.
+#ban player.
 @client.command()
 @commands.has_permissions(ban_members = True)
 async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
 
-#The below code unbans player.
+#unbans player.
 @client.command()
 @commands.has_permissions(ban_members = True)
 async def unban(ctx, *, member):
@@ -58,15 +59,6 @@ async def unban(ctx, *, member):
             await ctx.send(f'Unbanned {user.mention}')
             return
 
-# kick
-@client.command()
-@commands.has_permissions(kick_members=True)
-async def kick(ctx, member: discord.Member, *, reason=None):
-    if reason==None:
-      reason=" no reason provided"
-    await ctx.guild.kick(member)
-    await ctx.send(f'User {member.mention} has been kicked for {reason}')
-
 # cogs
 @client.command()
 async def load(ctx, extention):
@@ -80,6 +72,7 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
+#kick user
 @client.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
@@ -90,7 +83,7 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 
 
 
-# level
+# level system
 @client.event
 async def on_member_join(member):
     with open('levels.json', 'r') as f:
@@ -131,22 +124,39 @@ async def level_up(users, user , channel):
     if lvl_start < lvl_end:
         await client.send_message(channel, '{} has leveled up to level {}'.format(user.mention, lvl_end))
         users[user.id]['level'] = lvl_end
-        
+    
+#mute    
 @client.command(ctx)
 @commands.has_permissions(kick_members=True)
 async def mute(ctx, role:discord.Role, user: discord.Member):
     await user.add_roles(muterole)
     await ctx.send(f'{user.metion} was muted')
-    
+ 
+#unmute 
 @client.command(ctx)
 @commands.has_permissions(kick_members=True)
 async def unmute(ctx, role:discord.Role, user: discord.Member):
     await user.remove_roles(muterole)
     await ctx.send(f'{user.metion} was unmuted')
-    
+   
+#info about user   
 userinfo = bot.get_user(user_id)
 
 async def userinfo(ctx, *, user: discord.User)
     await ctx.send(f'getting {userinfo} info')
+    
+ # delete swear word   
+@client.event
+async def on_message(message):
+    if message.author.id == bot.user.id:
+        return
+    msg_content = message.content.lower()
 
+    curseWord = ['fuck', 'dick', "shit", "asshole", "cunt", "bitch", "Pussy", "Cock","Dickhead", "Motherfucker"]
+    
+    if any(word in msg_content for word in curseWord):
+        await message.delete(*, delay=None)
+        
+
+#run the bot
 client.run(token)
