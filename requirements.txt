@@ -1,2 +1,7 @@
-discord.py
+os
+discord
+json
 DiscordUtils
+flask
+Thread
+random

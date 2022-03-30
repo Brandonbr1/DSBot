@@ -1,3 +1,4 @@
+# used to run 24/7 on repl.it 
 from flask import Flask
 
 from threading import Thread
