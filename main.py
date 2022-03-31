@@ -177,7 +177,24 @@ async def on_message(message,ctx):
 keep_alive()
 TOKEN = os.environ.get("DISCORD_BOT_SECRET")
 
+@client.command(ctx)
+async def aboutbrandon(message, ctx):
+    await ctx.send("I am a Male who lives somewhere in Trinadad and Tobago like and to develop modpack,mods,plugins,addons for minecraft as a hobby and I also like helping people in open source projects my peffered pronouns are: he/him")
 
+@client.command(ctx)
+async def mylinks(message, ctx)
+    embed=discord.Embed(title="Link", url="https://linktr.ee/jerios", description="linktree:https://linktr.ee/jerios Website:https://brandonbr1.github.io/ weebly website:https://brandonmohammed666.weebly.com/ Github:https://github.com/Brandonbr1 Reddit:https://www.reddit.com/user/Thedemon_slayerlove Youtube:https://www.youtube.com/channel/UCcKah14SCQeg_jB39d_ok0g?sub_confirmation=1 Twitter:https://twitter.com/BrandonM666_ Curseforge:https://www.curseforge.com/members/brandonmohammed666/projects PMC:https://www.planetminecraft.com/member/mohammedbrandon/ Website:https://www.minecraftforum.net/members/brandon7579898", color=0xFF5733)
+    await ctx.send(embed=embed)
+    
+@client.command(ctx)
+async def commands(message, ctx)
+    embed=discord.Embed(title="Link", url="https://linktr.ee/jerios", description="commands: !aboutbrandon  !mylinks !discordinvite ", color=0xFF5733)
+    await ctx.send(embed=embed)
+
+@client.command(ctx)
+async def discordinvite(message, ctx)
+    await ctx.send("Perma Discord invite link:https://discord.gg/ekwHQs6uBZ")
+    
 #run the bot
 client.run(TOKEN)
 
