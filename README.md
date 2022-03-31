@@ -8,7 +8,8 @@ download the latest file as zip [here](https://github.com/Brandonbr1/DSBot/archi
 # requirements
 
 copy paste this below
-pip: -r requirements.txt
+<br>
+```pip: -r requirements.txt ```
 
 ## license 
 this project uses the [Zlib](https://github.com/Brandonbr1/DSBot/blob/main/LICENSE)
