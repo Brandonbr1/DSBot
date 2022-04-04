@@ -13,3 +13,7 @@ copy paste this below
 
 ## license 
 this project uses the [Zlib](https://github.com/Brandonbr1/DSBot/blob/main/LICENSE)
+
+This project uses replit and herouko they are both usable
+
+feel free to use the src code in your discord project
