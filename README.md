@@ -12,7 +12,7 @@ copy paste this below
 ```pip: -r requirements.txt ```
 
 ## license 
-this project uses the [Zlib](https://github.com/Brandonbr1/DSBot/blob/main/LICENSE)
+this project uses the [Creative Commons Zero v1.0 Universal ](https://github.com/Brandonbr1/DSBot/blob/main/LICENSE)
 
 This project uses replit and herouko they are both usable
 
