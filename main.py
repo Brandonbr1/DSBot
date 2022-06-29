@@ -59,7 +59,7 @@ async def load(ctx, extention):
     client.load_extension(f'cogs.{extention}')
 
 @client.command()
-async def load(ctx, extention):
+async def unload(ctx, extention):
     client.unload_extension(f'cogs.{extention}')
 
 for filename in os.listdir('./cogs'):
