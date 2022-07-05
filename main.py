@@ -1,4 +1,3 @@
-# packages
 from webserver import keep_alive
 import discord
 import os
@@ -10,20 +9,6 @@ from io import BytesIo
 intents = discord.Intents.all()
 
 client = commands.bot(command_prefix = '!', intents=intents )
-
-@client.event()
-async def on_member_join(member):
-    guild =  client.get_guild(844199297523646505)
-    channel = guild.get_channel(863605206301671454)
-    await channel.send(f":tada: Welcome to the sever {member.mention} you joining our discord sever means so mutch to us")
-
-@client.event()
-async def on_member_leave(member):
-    guild =  client.get_guild(844199297523646505)
-    channel = guild.get_channel(863605206301671454)
-    await channel.send(f"it looks like {member.mention} has left our discord sever it is sad but we thank {member.mention} for joining our discord sever")
-
-
 
 @client.event
 async def on_command_error(ctx, error):
