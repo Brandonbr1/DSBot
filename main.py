@@ -123,18 +123,7 @@ userinfo = bot.get_user(user_id)
 
 async def userinfo(ctx, *, user: discord.User)
     await ctx.send(f'getting {userinfo} info')
-    
- # delete swear word   
-@client.event
-async def on_message(message):
-    if message.author.id == bot.user.id:
-        return
-    msg_content = message.content.lower()
 
-    curseWord = ['fuck', 'dick', "shit", "asshole", "cunt", "bitch", "Pussy", "Cock","Dickhead", "Motherfucker"]
-    
-    if any(word in msg_content for word in curseWord):
-        await message.delete(*, delay=None)
        
        
 @Client.command(pass_context = True)
@@ -163,7 +152,7 @@ keep_alive()
 TOKEN = os.environ.get("DISCORD_BOT_SECRET")
 
 @client.command(ctx)
-async def aboutbrandon(message, ctx):
+async def aboutbrandonbr1(message, ctx):
     await ctx.send("I am a Male who lives somewhere in Trinadad and Tobago like and to develop modpack,mods,plugins,addons for minecraft as a hobby and I also like helping people in open source projects my peffered pronouns are: he/him")
 
 
